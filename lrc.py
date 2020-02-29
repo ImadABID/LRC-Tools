@@ -6,20 +6,6 @@ def cut(T,D):
         if SupOrEq(Balises[i][0],T):
             Balises[i][0]=soustraire(Balises[i][0], D)
 
-def soustraire(T, D):
-    s=T[0]*60+T[1]-(D[0]*60+D[1])
-    mn=0
-    while(s>=60):
-        mn+=1
-        s-=60
-    return [mn,s]
-
-def SupOrEq(T1,T2):
-    if T1[0]==T2[0] :
-        return T1[1]>=T2[1]
-    return T1[0]>T2[0]
-
-
 def extract_data(lrcfile_path):
     global Balises
     lrc_file=open(lrcfile_path,"r")
@@ -45,6 +31,19 @@ def exportdata(lrcfile_path):
     lrc_file=open(lrcfile_path,"w")
     lrc_file.write(txt[:len(txt)-1])
     lrc_file.close()
+
+def soustraire(T, D):
+    s=T[0]*60+T[1]-(D[0]*60+D[1])
+    mn=0
+    while(s>=60):
+        mn+=1
+        s-=60
+    return [mn,s]
+
+def SupOrEq(T1,T2):
+    if T1[0]==T2[0] :
+        return T1[1]>=T2[1]
+    return T1[0]>T2[0]
 
 def sperator_index(txt,sperator,start_search_from_index):
     for i in range(start_search_from_index,len(txt)):
